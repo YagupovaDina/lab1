@@ -133,14 +133,14 @@ syslog(LOG_INFO, "Starting daemonisation.");
   }
   fclose(pid_fp);
 }
-//randomDigitForFile = (sys.totalram)|(sys.freeram)&(sys.sharedram)|(sys.bufferram)&(sys.totalswap)&(sys.freeswap>>sys.uptime);
 
 
 int randomDigit(){
 	struct sysinfo sys;
 	sysinfo(&sys);
 	return (int) (rand()^(clock()*sys.bufferram));
-		//(int) (rand()^(clock()*sys.bufferram)^sys.procs);
+	//randomDigitForFile = (sys.totalram)|(sys.freeram)&(sys.sharedram)|(sys.bufferram)&(sys.totalswap)&(sys.freeswap>>sys.uptime);
+	//(int) (rand()^(clock()*sys.bufferram)^sys.procs); ужасно работает
 }
 
 int checkSize(){
